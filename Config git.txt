@@ -1,0 +1,4 @@
+git config --global user.name "erikepc"
+git config --global user.email erike45@hotmail.com
+
+dotnet new mvc -o Pokedex 
