@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Pokedex.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// Add services to the container.
 string conexao = builder.Configuration.GetConnectionString("Conexao");
+var versao = ServerVersion.AutoDetect(conexao);
 builder.Services.AddDbContext<AppDbContext>(
-    options => options.UseSqlServer(conexao)
+    options => options.UseMySql(conexao, versao)
 );
 
 builder.Services.AddControllersWithViews();

@@ -12,7 +12,7 @@ public class AppDbContext: DbContext
     public DbSet<Genero> Generos { get; set; }
     public DbSet<Pokemon> Pokemons { get; set; }
     public DbSet<PokemonTipo> PokemonTipos { get; set; }
-    public DbSet<Regiao> Regiaos { get; set; }
+    public DbSet<Regiao> Regioes { get; set; }
     public DbSet<Tipo> Tipos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,9 +22,10 @@ public class AppDbContext: DbContext
         #region Configuração do Muitos para Muitos - PokemonTipo
         // Definindo Chave Primária
         modelBuilder.Entity<PokemonTipo>()
-            .HasKey(pt => new{pt.TipoId});
+            .HasKey(pt => new { pt.PokemonNumero, pt.TipoId });
 
         #endregion
 
     }
+
 }
